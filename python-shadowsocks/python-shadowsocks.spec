@@ -10,7 +10,8 @@ URL:            https://github.com/shadowsocks/shadowsocks
 #Source0:        
 
 BuildArch:      noarch
-BuildRequires:  python-devel python-pip python-setuptools libsodium
+BuildRequires:  python-devel python-pip python-setuptools
+Requires:	python libsodium
 %description
 
 %prep

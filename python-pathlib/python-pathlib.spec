@@ -8,6 +8,7 @@ URL:		https://pypi.python.org/pypi/pathlib
 
 BuildArch:	noarch
 BuildRequires:	python-pip python-devel python-setuptools
+Requires:	python
 
 %description
 
