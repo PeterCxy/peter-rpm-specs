@@ -8,7 +8,7 @@ Group:		Development/Languages
 URL:		http://iojs.org
 Source0:	https://iojs.org/dist/v%{version}/iojs-v%{version}.tar.gz
 
-BuildRequires:	python zlib-devel gcc gcc-c++ glibc-devel
+BuildRequires:	python zlib-devel gcc gcc-c++ glibc-devel make
 Requires:	zlib glibc
 Conflicts:	nodejs
 
