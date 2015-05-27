@@ -7,19 +7,20 @@ HEAD="[BUILD]"
 if [[ -d $DIR && -f $SPEC ]]; then
   echo "$HEAD Cleaning up for $1"
   OUT=$PWD/out
-  rm -rf out
-  mkdir out
+  rm -rf $OUT
+  mkdir -p $OUT
+
+  echo "$HEAD Fetching source for $1"
+  mkdir -p $OUT/SOURCES
+  pushd $OUT/SOURCES
+  spectool -g $SPEC
+  popd
+
   echo "$HEAD Calling rpmbuild for $1"
-  rpmbuild --define "_topdir $OUT" -ba $PWD/$1/$1.spec
-  OUTFILE=$OUT/RPMS/*/$1-*.rpm
-  if [ -f $OUTFILE ]; then
-    echo "$HEAD Placing output"
-    mv $OUT/RPMS/*/$1-*.rpm $OUT/
-    echo "$HEAD Built package $1"
-    echo `ls $OUT/$1-*.rpm`
-  else
-    echo "$HEAD Build failure"
-  fi
+  rpmbuild --define "_topdir $OUT" -ba $SPEC
+  echo "$HEAD Build finished."
+  echo `ls $OUT/RPMS/*/`
+
 else
   echo "usage: build.sh PACKAGE"
 fi
