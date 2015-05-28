@@ -15,6 +15,11 @@ if [[ -d $DIR && -f $SPEC ]]; then
   pushd $OUT/SOURCES
   spectool -g $SPEC
   popd
+  if [ -d $DIR/src ]; then
+    pushd $DIR
+    tar czvf $OUT/SOURCES/src.tar.gz src
+    popd
+  fi
 
   echo "$HEAD Calling rpmbuild for $1"
   rpmbuild --define "_topdir $OUT" -ba $SPEC
