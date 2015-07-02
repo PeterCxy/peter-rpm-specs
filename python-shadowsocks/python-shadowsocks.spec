@@ -1,6 +1,6 @@
 
 Name:           python-shadowsocks
-Version:        2.6.9
+Version:        2.6.10
 Release:        1%{?dist}
 Summary:        A fast tunnel proxy written in Python
 
